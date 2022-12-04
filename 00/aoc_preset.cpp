@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 
     string item;
-    ifstream myfile("aocXX.txt");
+    ifstream myfile("aoc04.txt");
 
     vector<int> input;
 

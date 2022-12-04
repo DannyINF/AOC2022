@@ -3,13 +3,14 @@
 #include <vector>
 #include <list>
 #include <string>
+#include "../custom_functions/custom_functions.h"
 
 using namespace std;
 
 int main() {
 
     string item;
-    ifstream myfile("aoc04.txt");
+    ifstream myfile("aocXX.txt");
 
     vector<int> input;
 

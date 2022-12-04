@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// Decrypts a single character using the provided cipher
 int decrypt(char x) {
     if (x == 'A') {
         return 0;
@@ -17,6 +18,7 @@ int decrypt(char x) {
     } 
 }
 
+// Predicts the value of the second character based on the value of the first character
 int predict(int x, char y) {
     if (y == 'X') {
         return ((x - 1) + 3) % 3;
@@ -27,8 +29,9 @@ int predict(int x, char y) {
     }
 }
 
+// Calculates the points for a given pair of decrypted characters
 int points(int x, int y) {
-    int points = y+1;
+    int points = y + 1;
 
     if (x == y) {
         points += 3;
@@ -40,21 +43,23 @@ int points(int x, int y) {
 }
 
 int main() {
-
+    // Initialize variables
     string item;
     ifstream myfile("aoc02.txt");
-
     vector<string> input;    
     int score = 0;
 
-    while ( getline(myfile, item) ) {
-        cout << item[0] << " " << item[2] << endl;
+    // Read the file line by line
+    while (getline(myfile, item)) {
+        // Decrypt the character at index 0 and predict the value of the character at index 2
         int first = decrypt(item[0]);
         int second = predict(first, item[2]);
 
+        // Calculate the points for the decrypted characters and add them to the score
         score += points(first, second);
     }
 
+    // Output the final score
     cout << score << endl;
 
     // Close the file

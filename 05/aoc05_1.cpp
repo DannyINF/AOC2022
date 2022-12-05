@@ -5,6 +5,7 @@
 #include <string>
 #include <deque>
 #include "../custom_functions/custom_functions.h"
+#include "../custom_functions/ExtendedVecor.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ char get_char(string s, int index) {
     return s[index];
 }
 
-vector<vector<char>> stacks = {};
+vector<ExtendedVector<char>> stacks = {};
 
 int main() {
 
@@ -39,9 +40,7 @@ int main() {
         vector<string> y = split(item, ' ');
         if (y[0] == "move") {
             for (int i = 0; i < stoi(y[1]); i++) {
-                char from = stacks[stoi(y[3])-1].front();
-                stacks[stoi(y[3])-1].erase(stacks[stoi(y[3])-1].begin());
-                stacks[stoi(y[5])-1].insert(stacks[stoi(y[5])-1].begin(), from);
+                stacks[stoi(y[5])-1].push_front(stacks[stoi(y[3])-1].pop_front());
             }
         }
     }

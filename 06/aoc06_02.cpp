@@ -21,24 +21,16 @@ bool is_char_in_vector(ExtendedVector<char> v, char c) {
 // This function should return the ExtendedVector v with all characters until the
 // first occurrence of the character c removed.
 ExtendedVector<char> remove_until_char(ExtendedVector<char> v, char c) {
-    cout << "pop: ";
     while (!v.empty() && v.front() != c) {
-        cout << v.pop_front();
+        v.pop_front();
     }
-    cout << v.pop_front();
-    cout << endl;
+    v.pop_front();
     return v;
 }
 
 int main() {
     string item;
     ifstream myfile("aoc06.txt");
-
-    // Check if the file was successfully opened
-    if (!myfile) {
-        cerr << "Failed to open file!" << endl;
-        return 1;
-    }
 
     vector<int> input;
 
@@ -53,7 +45,6 @@ int main() {
             i++;
 
             // Check if the current character is in the vector
-            cout << "is char in v: " << is_char_in_vector(chars, c) << endl;
             if (!is_char_in_vector(chars, c)) {
                 chars.push_back(c);
                 number_different++;
@@ -62,12 +53,6 @@ int main() {
                 chars = remove_until_char(chars, c);
                 number_different = chars.size();
             }
-
-            // Output the current vector
-            for (char ch : chars) {
-                cout << ch;
-            }
-            cout << endl;
 
             // If the number of different characters is 14, output the current index and break out of the loop
             if (number_different == 14) {

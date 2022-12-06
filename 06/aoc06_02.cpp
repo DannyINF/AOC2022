@@ -4,7 +4,7 @@
 #include <list>
 #include <string>
 #include "../custom_functions/custom_functions.h"
-#include "../custom_functions/ExtendedVecor.h"
+#include "../custom_functions/ExtendedVector.h"
 
 using namespace std;
 

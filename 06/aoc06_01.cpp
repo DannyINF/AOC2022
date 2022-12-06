@@ -8,16 +8,6 @@
 
 using namespace std;
 
-// This function should return true if the character c is present in the vector v
-// and false otherwise.
-bool is_char_in_vector(ExtendedVector<char> v, char c) {
-    for (char ch : v) {
-        if (ch == c)
-            return true;
-    }
-    return false;
-}
-
 // This function should return the ExtendedVector v with all characters until the
 // first occurrence of the character c removed.
 ExtendedVector<char> remove_until_char(ExtendedVector<char> v, char c) {
@@ -45,7 +35,7 @@ int main() {
             i++;
 
             // Check if the current character is in the vector
-            if (!is_char_in_vector(chars, c)) {
+            if (!chars.contains(c)) {
                 chars.push_back(c);
                 number_different++;
             } else {

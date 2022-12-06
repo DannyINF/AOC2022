@@ -11,7 +11,7 @@ public:
     T pop()
     {
         // Get a reference to the last element in the vector
-        T& lastElement = this->back();
+        T lastElement = this->back();
 
         // Remove the last element from the vector
         this->pop_back();
@@ -38,5 +38,15 @@ public:
     {
         // Insert the element at the beginning of the vector
         this->insert(this->begin(), element);
+    }
+
+    // Add a new contains() method that returns true, if the vector contains given element and false otherwise
+    bool contains(const T& element) {
+        for (const T& e : *this) {
+            if (e == element) {
+                return true;
+            }
+        }
+        return false;
     }
 };

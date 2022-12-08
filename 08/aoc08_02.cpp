@@ -10,28 +10,9 @@
 using namespace std;
 using namespace std::chrono;
 
-void print_map(ExtendedVector<ExtendedVector<int>> map) {
-    for (ExtendedVector e : map) {
-        for (int i : e) {
-            cout << i;
-        }
-        cout << endl;
-    }
-}
-
-int sum_map(ExtendedVector<ExtendedVector<int>> map) {
-    int sum = 0;
-    for (ExtendedVector e : map) {
-        for (int i : e) {
-            sum += i;
-        }
-    }
-    return sum;
-}
-
-int max_map(ExtendedVector<ExtendedVector<int>> map) {
+int max_map(ExtendedVector<ExtendedVector<int>> *map) {
     int max = 0;
-    for (ExtendedVector e : map) {
+    for (ExtendedVector e : *map) {
         for (int i : e) {
             max = __max(max, i);
         }
@@ -43,7 +24,7 @@ int main() {
     auto start = high_resolution_clock::now();
 
     string item;
-    ifstream myfile("aoc08.txt");
+    ifstream myfile("message.txt");
 
     int visible_trees = 0;
 
@@ -78,16 +59,16 @@ int main() {
         row_index++;
     }
 
-    for (int index = 0; index < map.size(); index++) {
-        for (int mark = 0; mark < map[index].size(); mark++) {
+    for (int index = 1; index < map.size() - 1; index++) {
+        for (int mark = 1; mark < map[index].size() - 1; mark++) {
             int scenic_score = 1;
             int counter;
             int height = map[index][mark];
-            if (index == 0 || mark == 0 || index == map.size() - 1 || mark == map[index].size() - 1) {
-                scenic_score = 0;
-                markers[index][mark] = scenic_score;
-                continue;
-            }
+            // if (index == 0 || mark == 0 || index == map.size() - 1 || mark == map[index].size() - 1) {
+            //     scenic_score = 0;
+            //     markers[index][mark] = scenic_score;
+            //     continue;
+            // }
             // left
             counter = 1;
             for (int i = mark - 1; i >= 1; i--) {
@@ -128,7 +109,7 @@ int main() {
         }
     }    
 
-    cout << max_map(markers) << endl;
+    cout << max_map(&markers) << endl;
 
     // Close the file
     myfile.close();

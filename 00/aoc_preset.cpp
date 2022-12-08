@@ -5,6 +5,7 @@
 #include <chrono>
 #include <string>
 #include "../custom_functions/custom_functions.h"
+#include "../custom_functions/ExtendedVector.h"
 
 using namespace std;
 using namespace std::chrono;

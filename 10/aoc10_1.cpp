@@ -31,6 +31,7 @@ int main() {
     int sum = 0;
     for (int i : {20, 60, 100, 140, 180, 220}) {
         cout << values_x[i-1] << " " << values_x[i-1] * i << endl;
+        sum += values_x[i-1] * i;
     }
     cout << sum << endl;
 

@@ -28,17 +28,24 @@ int main() {
             values_x.push_back(values_x.back());
         }
     }
-    int count = 1;
+
+    ofstream output("output.txt");
     for (int i : values_x) {
-        if (count%40 == i || count&40 == i+1 || count%40 == i+2) {
+        output << i << endl;
+    }
+    output.close();
+
+    int index = 0;
+    for (int input : values_x) {
+        index = index % 40;
+        if (index == 0)
+            cout << endl;
+        if (index == input || index == input - 1 || index == input + 1) {
             cout << "#";
         } else {
-            cout << ".";
+            cout << " ";
         }
-        if (count%40 == 0) {
-            cout << endl;
-        }
-        count++;
+        index++;
     }
 
     // Close the file
